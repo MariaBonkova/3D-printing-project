@@ -1,0 +1,28 @@
+.carousel-item {
+    height: 24rem;
+    background-color: white;
+}
+.carousel-item img{
+    opacity: 0.6;
+
+}
+body{
+    font-family: "Comic Sans MS", sans-serif;
+
+}
+.container-fluid {
+    background: linear-gradient(55deg, rgb(244, 210, 192) 4%, rgb(16, 253, 254) 100%);
+}
+.card-body{
+    box-shadow: inset 0px -1px 77px 18px rgba(176, 250, 225, 0.5);
+}
+.text-md-center{
+     background: linear-gradient(55deg, rgb(244, 210, 192) 4%, rgb(16, 253, 254) 100%);
+   border-radius: 30em;
+    transition: 0.5s;
+}
+#logo{
+    font-family: 'Pacifico', cursive;
+}
+.slogan{
+ margin-top:-400px;}
