@@ -1,5 +1,5 @@
 <!doctype html>
-`<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/logo.css">
 </head>
 <body>
 <header>
@@ -27,13 +27,13 @@
             </h1>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="navbar-brand link-success" aria-current="page" href="home.html">Начало</a>
+                    <a class="navbar-brand link-success" aria-current="page" href="#">Начало</a>
                 </li>
                 <li class="nav-item">
-                    <a class="navbar-brand link-success" href="logo.html">Вход</a>
+                    <a class="navbar-brand link-success" href="#">Вход</a>
                 </li>
                 <li class="nav-item">
-                    <a class="navbar-brand link-success" href="registration.html">Регистация</a>
+                    <a class="navbar-brand link-success" href="#">Регистация</a>
                 </li>
                 <li class="nav-item">
                     <a class="navbar-brand link-success">За нас</a>
@@ -43,141 +43,50 @@
     </nav>
 </header>
 <main class="my-5">
-    <div class="container">
-        <div class="row">
-            <div class="col md-7">
-                <h1 class="link-success">Създай своят свят чрез 3D принтиране!</h1>
+    <section class="login justify-content-center">
+        <div class="container py-5 ">
+            <form  th:action="@{/user/login}"
+                   th:method="POST">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 mx-auto">
+                                    <div class="head text-center link-success">
+                                        <h3>Влизане в профила</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form p-3">
+                                <div class="form-row mt-5">
+                                    <div class="col-lg-12">
+                                            <input type="text" class="effect-1" placeholder="Имейл адрес">
+                                        <span class="Focus-border"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mt-2">
+                                <div class="col-lg-12">
+                                    <input type="password" class="effect-1" placeholder="   Парола">
+                                    <span class="Focus-border"></span>
+                                </div>
+                                <div class="offset-12 col-lg-4 pt-5 justify-content-md-end">
+                                    <button class="btn1">ВХОД</button>
+                                </div>
 
-                <img width="1200" height="600"
-                        src="https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/beginner-guide-3dprint.jpg"
-                        alt="Pic">
-            </div>
-            <div class="col md-5 ">
-                <p class="my-4" >Чрез иновативно 3D принтиране на предмети ние реализираме Вашите смели идеи. Създаваме предмети, който сами
-                сте измислили, но дори да нямате смели желания може да си изберете от нашите каталози. Всички продукти се изработват индивидуално според спецификата на клиента.</p>
-                <button type="button" class="btn btn-outline-info link-success">Снимки</button>
-            </div>
-        </div>
-    </div>
+                            </div>
 
-
-    <div class="card-group mt-5 ">
-        <div class="card p-2">
-            <img src="https://i.pinimg.com/originals/67/78/b3/6778b3a171c0f1c1353ea16b0955b9b4.jpg"
-                 class="card-img-top"
-                 width="500"
-                 height="200" alt="...">
-            <div class="card-body">
-                <h5 class="card-title link-info">Къщи и предмети за домакинството</h5>
-                <p class="card-text  mt-3">3D Принт сторителство на къщи. Създаване на мебели за пълно обзавеждане на домовете, както и изцяло създаване
-                на предмети, аксесоари, вещи за хармоничното живеене.</p>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-info link-success" type="button">Каталог</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            </form>
         </div>
-        <div class="card p-2">
-            <img src="https://i.cbc.ca/1.2452245.1386268532!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_1180/3d-printed-guitar.jpg" class="card-img-top"
-                 width="500"
-                 height="200"
-                 alt="...">
-            <div class="card-body">
-                <h5 class="card-title link-info">Музикални инструменти</h5>
-                <p class="card-text  mt-3">Музиката е изкуство, а ние сме хората, който създават изкуство в музикалните инструменти. Чрез 3D Принтирането
-                създаваме уникални инстументи със съваршен звук и качество.</p>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-info  mt-3 link-success" type="button">Каталог</button>
-                </div>
-            </div>
-        </div>
-        <div class="card p-2">
-            <img src="https://th.bing.com/th/id/R.cb430cf0c5b711715e146046cb14aec3?rik=s%2feqcLYnLo7%2bkA&riu=http%3a%2f%2fwww.geeetech.com%2fblog%2fwp-content%2fuploads%2f2018%2f02%2fantlers.jpg&ehk=h1%2f7WGv24HkMdNxU5%2bmCriX67DWUku408cDiOTw5AQQ%3d&risl=&pid=ImgRaw&r=0"
-                 class="card-img-top"
-                 width="500"
-                 height="200"
-                 alt="...">
-            <div class="card-body">
-                <h5 class="card-title link-info">Предмети за домашни любимци</h5>
-                <p class="card-text  mt-3">Домашният любимец е член от семейството. Когато искаш да е уникален, да се обръщат след него всички е време да
-               създавем и за него уникалните му предмети. </p>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-info  mt-3 link-success" type="button">Каталог</button>
-                </div>
+    </section>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row" >
-            <div class="col-sm-12 col-md-12 mt-5 ">
-                <h4 class="text-md-center">Зарадвай свой приятел, направи му подарък! </h4>
-                <p class="text-md-center">За целта първо се регистрация в сайта.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-5">
-        <div class="carousel slide" id="carouselSlider">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselSlider" data-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselSlider" data-slide-to="1" class="active"></li>
-                <li data-bs-target="#carouselSlider" data-slide-to="2" class="active"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://i.pinimg.com/564x/59/e8/ee/59e8ee50d5e7a63e549729f232785ebf.jpg" class="w-100 h-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://ae01.alicdn.com/kf/HTB13I0KbH9YBuNjy0Fgq6AxcXXav/Shape-Led-Abstract-Nightlights-Discoloration-Table-Lamp-Touch-Switch-Kids-Night-Light-Art-Lamp-Veilleuse-Enfant.jpg" class="w-100  h-100" alt="...">             </div>
-                <div class="carousel-item">
-                    <img src="https://i.pinimg.com/originals/c5/6c/0d/c56c0d4a37ce777356a14120fcd79c40.jpg" class="w-100 h-100" alt="...">
-                </div>
-
-            </div>
-            <a class="carousel-control-prev" role="button" href="#carouselSlider" data-slide="prev">
-             <span class="carousel-control-prev-icon">
-             </span>
-            </a>
-            <a class="carousel-control-next" role="button" href="#carouselSlider" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
-    </div>
-
-
-    <div class="container mt-5">
-        <h1 class="link-success">Свържете се с нас</h1>
-        <form class="row g-3">
-            <div class="col-md-6">
-                <label for="firstName" class="form-label">Име</label>
-                <input type="text" class="form-control" id="firstName" required>
-            </div>
-            <div class="col-md-6">
-                <label for="lastName" class="form-label">Фамилия</label>
-                <input type="text" class="form-control" id="lastName" required>
-            </div>
-            <div class="col-md-8">
-                <label for="emailInfo" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="emailInfo" required>
-            </div>
-            <div class="col-md-4">
-                <label for="phoneNumber" class="form-label">Телефонен номер</label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="+359 ..........">
-            </div>
-           <div class="col-md-12">
-               <label for="comments" class="form-label">Коментари</label>
-               <textarea class="form-control" id="comments" rows="3" required></textarea>
-           </div>
-            <div class="col-md-12">
-                <button type="button" class="btn btn-info link-success">Изпрати</button>
-            </div>
-        </form>
-    </div>
 </main>
-
 </body>
-
 <div class="container my-5">
     <footer
             class="text-center text-lg-start text-success"
@@ -191,7 +100,7 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 font-weight-bold">
-                           3D Mary Printing
+                            3D Mary Printing
                         </h6>
                         <p>
                             <a class="text-success">Начало</a>
@@ -199,10 +108,10 @@
                         <p>
                             <a class="text-success">Вход</a>
                         </p><p>
-                            <a class="text-success">Регистрация</a>
-                        </p> <p>
-                            <a class="text-success">Количка</a>
-                        </p>
+                        <a class="text-success">Регистрация</a>
+                    </p> <p>
+                        <a class="text-success">Количка</a>
+                    </p>
                         <p>
                             <a class="text-success">За нас</a>
                         </p>
@@ -308,5 +217,4 @@
     </footer>
     <!-- Footer -->
 </div>
-<!-- End of .container -->
 </html>

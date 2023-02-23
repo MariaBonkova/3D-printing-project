@@ -5,4 +5,4 @@ public enum Product {
     HOUSEHOLD_GOODS,
     MUSICAL_INSTRUMENTS,
     PETS_ITEMS;
-    }
+}

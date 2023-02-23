@@ -1,12 +1,13 @@
 package com.example.demo.models.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "users")
-public class User extends BaseEntity{
+@Table(name = "user")
+public class UserEntity extends BaseEntity{
     private String firstName;
     private String lastName;
     private Integer phoneNumber;
@@ -16,8 +17,10 @@ public class User extends BaseEntity{
     private String town;
     private String deliveryAddress;
     private boolean gift; // по подразбиране фолз
+    private List<UserRoleEntity> userRoleEntityList=new ArrayList<>();
 
-    public User() {
+
+    public UserEntity() {
     }
 
 @Column(name = "first_name",nullable = false)
@@ -92,5 +95,16 @@ public class User extends BaseEntity{
 
     public void setGift(boolean gift) {
         this.gift = gift;
+    }
+
+    @ManyToMany
+    @Enumerated(EnumType.STRING)
+    public List<UserRoleEntity> getUserRoleEntityList() {
+        return userRoleEntityList;
+    }
+
+    public UserEntity setUserRoleEntityList(List<UserRoleEntity> userRoleEntityList) {
+        this.userRoleEntityList = userRoleEntityList;
+        return this;
     }
 }
