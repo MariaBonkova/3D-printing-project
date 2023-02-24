@@ -1,6 +1,6 @@
 package com.example.demo.models.entity;
 
-public enum Product {
+public enum ProductEntity {
     HOME,
     HOUSEHOLD_GOODS,
     MUSICAL_INSTRUMENTS,

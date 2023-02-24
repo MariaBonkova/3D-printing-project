@@ -14,17 +14,21 @@ public class UserLoginController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/login")
+    @GetMapping("/users/login")
     public String login() {
         return "login";
+    }
+    @GetMapping("/users/register")
+    public String register() {
+        return "register";
     }
 
 
 
 
-    @PostMapping("/user/login")
+    @PostMapping("/users/login")
     public String login(UserLoginDto userLoginDto) {
-        System.out.println("User is logged: " + userService.login(userLoginDto));
+
         return "redirect:/home";
     }
 
