@@ -11,6 +11,10 @@ body{
     font-size: x-large;
 
 }
+.regFont{
+    font-size: x-large;
+    background: linear-gradient(55deg, rgb(244, 210, 192) 4%, rgb(16, 253, 254) 100%);
+}
 .container-fluid {
     background: linear-gradient(55deg, rgb(244, 210, 192) 4%, rgb(16, 253, 254) 100%);
 }
@@ -27,3 +31,7 @@ body{
 }
 .slogan{
  margin-top:-400px;}
+
+h2{
+    color: #20c997;
+}

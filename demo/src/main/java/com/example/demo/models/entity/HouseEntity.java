@@ -5,6 +5,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "homes")
-public class HomeEntity extends BaseEntity{
+public class HouseEntity extends BaseEntity{
 
 }
