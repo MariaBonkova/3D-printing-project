@@ -1,18 +1,18 @@
 package com.example.demo.models.dto;
 
 public class UserLoginDto {
-    private String email;
+    private String userName;
     private String password;
 
     public UserLoginDto() {
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserName() {
+        return userName;
     }
 
-    public UserLoginDto setEmail(String email) {
-        this.email = email;
+    public UserLoginDto setUserName(String userName) {
+        this.userName = userName;
         return this;
     }
 

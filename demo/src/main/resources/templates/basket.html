@@ -1,22 +1,264 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>3DPrinting</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Pacifico&family=Sevillana&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/logo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3DPrinting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Pacifico&family=Sevillana&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                 class="bi bi-slack link-danger" viewBox="0 0 16 16">
+                <path d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z"/>
+            </svg>
+            <ul class="nav justify-content-start">
+                <li class="nav-item p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                         class="bi bi-gift link-success" viewBox="0 0 16 16">
+                        <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z"/>
+                    </svg>
+                </li>
+                <li class="nav-item p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                         class="bi bi-cart4 link-success" viewBox="0 0 16 16">
+                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                    </svg>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand link-success" aria-current="page">Гост</a>
+                </li>
+            </ul>
+            <h1 class="animate__animated animate__heartBeat animate__infinite  mb-4 font-weight-bold link-danger"
+                id="logo">
+                3D Mary Printing
+            </h1>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="navbar-brand link-success" aria-current="page" href="/home">Начало</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand link-success" href="/users/login">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand link-success" href="/users/register">Регистация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand link-success" href="/users/logout">Изход</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="nav justify-content-center container-fluid">
+        <li class="nav-item">
+            <a class="nav-link link-success" aria-current="page" href="/house-catalog">Къщи</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-success" href="/music-catalog">Музикални инструменти</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-success" href="/pet-catalog">Предмети за домашни любимци</a>
+        </li>
+    </ul>
+</header>
 <body>
-<header th:replace="fragments/commons::navbar"></header>
+<div class="container py5">
+    <div class="card justify-content-center">
+        <div class="row link-success">
+            <div class="col-md-12 cart ">
+                <div class="title">
+                    <div class="row">
+                        <div class="col"><h4><b>Количка</b></h4></div>
+                        <div class="col align-self-center text-right text-muted">3 броя</div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
+                        <div class="col">
+                            <div class="row text-muted">Shirt</div>
+                            <div class="row">Cotton T-shirt</div>
+                        </div>
+                        <div class="col">
+                            <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                        </div>
+                        <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+            </div>
+            <div class="col-md-12 summary ">
+                <div><h5><b>Summary</b></h5></div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;">ITEMS 3</div>
+                    <div class="col text-right">&euro; 132.00</div>
+                </div>
+                <form>
+                    <p>Доставка</p>
+                    <!-- Default radio -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                        <label class="form-check-label" for="flexRadioDefault1">До офис-10лв</label>
+                    </div>
+                    <!-- Default checked radio -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                               checked/>
+                        <label class="form-check-label" for="flexRadioDefault2">На адрес-15лв </label>
+                    </div>
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div class="col text-right">&euro; 137.00</div>
+                </div>
+                <button class="btn1 bt">Плащане</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<section class="justify-content-center">
+
+    <div class="container py-5 ">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto">
+                                <div class="head text-center link-success">
+                                    <h3>Данни за доставка </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-12">
+                                <input type="text" class="effect-1" placeholder="Трите имена на получателя*">
+                                <span class="Focus-border"></span>
+                                <small class="text-danger">Username error message</small>
+                            </div>
+                        </div>
+                        <div class="form-row ">
+                            <div class="col-lg-12">
+                                <input type="text" class="effect-1" placeholder="Телефон*">
+                                <span class="Focus-border"></span>
+                                <small class="text-danger">Username error message</small>
+                            </div>
+                        </div>
+                        <div class="form-row my-5">
+                            <div class="col-lg-12 ">
+                                <input type="text" class="effect-1" placeholder="Държава*">
+                                <span class="Focus-border"></span>
+                                <small class="text-danger">Username error message</small>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <input type="text" class="effect-1" placeholder="Град/Село*">
+                                <span class="Focus-border"></span>
+                                <small class="text-danger">Username error message</small>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <input type="text" class="effect-1" placeholder="Пощенски код*">
+                                <span class="Focus-border"></span>
+                                <small class="text-danger">Username error message</small>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <input type="text" class="effect-1" placeholder="Адрес на офис на Спиди">
+                                <span class="Focus-border"></span>
+                                <small class="text-danger">Username error message</small>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <input type="text" class="effect-1" placeholder="Адрес 1 /улица №, ет., ап/">
+                                <span class="Focus-border"></span>
+                                <small class="text-danger">При поръчка на подарък</small>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <input type="text" class="effect-1" placeholder="Допълнителни обяснения">
+                                <span class="Focus-border"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<section>
+    <div class="container py-5">
+        <div class="row justify-content-end">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <!-- Default radio -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                            <label class="form-check-label" for="flexRadioDefault1"> Плащане при доставка
+                                <button class="btn-blue">
+                                    <span>Изпрати поръчката</span>
+                                </button>
+                            </label>
+                        </div>
+                        <!-- Default checked radio -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked/>
+                            <label class="form-check-label" for="flexRadioDefault2">Плащане с карта</label>
+                            <img class="pay" src="https://i.imgur.com/WIAP9Ku.jpg">
+                        </div>
+
+                            <div class="col-lg-12">
+                                <div class="row px-3">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-control-label">Име на картодържател</label>
+                                        <input type="text" id="cname" name="cname" placeholder="Иван Иванов">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-control-label">Card Number</label>
+                                        <input type="text" id="cnume" name="cnum" placeholder="1111 2222 3333 4444">
+                                    </div>
+                                </div>
+                                <div class="row px-2">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-control-label">Expiration Date</label>
+                                        <input type="text" id="exp" name="exp" placeholder="MM/YYYY">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-control-label">CVV</label>
+                                        <input type="text" id="cvv" name="cvv" placeholder="***">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mt-2">
+
+                                <div class="row d-flex justify-content-between px-4" id="tax">
+                                    <p class="mb-1 text-left">Крайна сума</p>
+                                    <h6 class="mb-1 text-right">$26.48</h6>
+                                </div>
+                                <button class="btn-block btn-blue">
+                            <span>
+                                <span id="checkout">Checkout</span>
+                                <span id="check-amt">$26.48</span>
+                            </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>

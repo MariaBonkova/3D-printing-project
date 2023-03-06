@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+  private Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     public final UserRepository userRepository;
 
@@ -25,9 +25,9 @@ public class UserServiceImpl implements UserService {
 
     public boolean login(UserLoginDto userLoginDto) {
         Optional<UserEntity> userOpt = userRepository.
-                findByEmail(userLoginDto.getEmail());
+                findByEmail(userLoginDto.getUserName());
         if (userOpt.isEmpty()) {
-            LOGGER.info("User with this email [{}] not found", userLoginDto.getEmail());
+            LOGGER.info("User with this email [{}] not found", userLoginDto.getUserName());
             return false;
         }
         return userOpt.get().getPassword().equals(userLoginDto.getPassword());

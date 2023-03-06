@@ -8,15 +8,12 @@ public class UserRegisterDto {
 
     private String firstName;
     private String lastName;
+    private String userName;
     private String phoneNumber;
     private String email;
     private String password;
     private String confirmPassword;
-    private String country;
-    private String town;
-    private String postCode;
-    private String deliveryAddress;
-    private String description;
+
 
     public UserRegisterDto() {
     }
@@ -44,6 +41,17 @@ public class UserRegisterDto {
     }
 
     @NotBlank(message = "Required field")
+    @Size(min = 2, max = 10, message = "User name must be between 2 and 10 characters")
+    public String getUserName() {
+        return userName;
+    }
+
+    public UserRegisterDto setUserName(String userName) {
+        this.userName = userName;
+        return this;
+    }
+
+    @NotBlank(message = "Required field")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -52,6 +60,7 @@ public class UserRegisterDto {
         this.phoneNumber = phoneNumber;
         return this;
     }
+
     @NotBlank(message = "Required field")
     @Email
     public String getEmail() {
@@ -62,8 +71,9 @@ public class UserRegisterDto {
         this.email = email;
         return this;
     }
+
     @NotBlank(message = "Required field")
-    @Size(min = 2,max = 10,message = "Password must be between 2 and 10 characters")
+    @Size(min = 2, max = 10, message = "Password must be between 2 and 10 characters")
     public String getPassword() {
         return password;
     }
@@ -72,8 +82,9 @@ public class UserRegisterDto {
         this.password = password;
         return this;
     }
+
     @NotBlank(message = "Required field")
-    @Size(min = 2,max = 10,message = "Password must be between 2 and 10 characters")
+    @Size(min = 2, max = 10, message = "Password must be between 2 and 10 characters")
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -83,50 +94,4 @@ public class UserRegisterDto {
         return this;
     }
 
-    @NotBlank(message = "Required field")
-    public String getCountry() {
-        return country;
-    }
-
-    public UserRegisterDto setCountry(String country) {
-        this.country = country;
-        return this;
-    }
-    @NotBlank(message = "Required field")
-    public String getTown() {
-        return town;
-    }
-
-    public UserRegisterDto setTown(String town) {
-        this.town = town;
-        return this;
-    }
-    @NotBlank(message = "Required field")
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public UserRegisterDto setPostCode(String postCode) {
-        this.postCode = postCode;
-        return this;
-    }
-
-    @NotBlank(message = "Required field")
-    public String getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public UserRegisterDto setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public UserRegisterDto setDescription(String description) {
-        this.description = description;
-        return this;
-    }
 }

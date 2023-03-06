@@ -31,112 +31,81 @@
     </header>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="0.4" d="M0,224L34.3,218.7C68.6,213,137,203,206,192C274.3,181,343,171,411,149.3C480,128,549,96,617,74.7C685.7,53,754,43,823,69.3C891.4,96,960,160,1029,154.7C1097.1,149,1166,75,1234,69.3C1302.9,64,1371,128,1406,160L1440,192L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
     <main class="registration">
-    <section class="justify-content-center">
-        <div class="container py-5 ">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-12 mx-auto">
-                                    <div class="head text-center link-success">
-                                        <h3>Регистрация на нов потребител</h3>
-                                    </div>
+
+    <div class="container justify-content-center">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto">
+                                <div class="head text-center link-success">
+                                    <h3>Регистрация на нов потребител</h3>
                                 </div>
                             </div>
-                            <div class="form p-3">
-                                <div class="form-row mt-5">
-                                    <div class="col-lg-12">
-                                        <p class="link-danger text-center">Полетата със звездичка (*) са задължителни!</p>
-                                        <h5>Лични данни</h5>
-                                        <input type="text" class="effect-1" placeholder="Име*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
+                        </div>
+                        <form  th:action="@{/users/register}"
+                               th:method="post"
+                               th:object="${userRegisterDto}">
+                        <div class="form p-3">
+                            <div class="form-row mt-5">
+                                <div class="col-lg-12">
+                                    <p class="link-danger text-center">Полетата със звездичка (*) са задължителни!</p>
+                                    <h5>Лични данни</h5>
+                                    <input th:field="*{firstName}" th:errorclass="bg-danger" type="text" class="effect-1" placeholder="Име*">
+                                    <span class="Focus-border"></span>
+                                    <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"  class="text-danger">Username error message</small>
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-lg-12">
-                                        <input type="text" class="effect-1" placeholder="Фамилия*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-
-                                    </div>
-                                </div>
-                                <div class="form-row ">
-                                    <div class="col-lg-12">
-                                        <input type="text" class="effect-1" placeholder="Телефон*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-
-                                    </div>
-                                </div>
-                                <div class="form-row my-5">
-                                    <div class="col-lg-12 ">
-                                        <h5>Данни за профила</h5>
-                                        <input type="text" class="effect-1" placeholder="Имейл адрес*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="password" class="effect-1" placeholder="Парола*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-                                    </div> <div class="form-row mt-2">
-                                    <div class="col-lg-12">
-                                        <input type="password" class="effect-1" placeholder="Повтори парола*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-                                    </div>
                                 </div>
                             </div>
-                                <div class="form-row my-5">
-                                    <div class="col-lg-12 ">
-                                        <h5>Данни за адрес за доставка</h5>
-                                        <input type="text" class="effect-1" placeholder="Държава*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-                                    </div>  <div class="col-lg-12 ">
-                                        <input type="text" class="effect-1" placeholder="Град/Село*">
-                                        <span class="Focus-border"></span>
+                            <div class="form-row">
+                                <div class="col-lg-12">
+                                    <input type="text" class="effect-1" placeholder="Фамилия*">
+                                    <span class="Focus-border"></span>
                                     <small  class="text-danger">Username error message</small>
-                                    </div>
-                                    <div class="col-lg-12 ">
-                                        <input type="text" class="effect-1" placeholder="Пощенски код*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-                                    </div>
-                                    <div class="col-lg-12 ">
-                                        <input type="text" class="effect-1" placeholder="Адрес 1 /улица №, ет., ап/*">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">Username error message</small>
-                                    </div>
-                                    <div class="col-lg-12 ">
-                                        <input type="text" class="effect-1" placeholder="Адрес 2 /улица №, ет., ап/">
-                                        <span class="Focus-border"></span>
-                                        <small  class="text-danger">При поръчка на подарък</small>
-                                    </div><div class="col-lg-12 ">
-                                        <input type="text" class="effect-1" placeholder="Допълнителни обяснения">
-                                        <span class="Focus-border"></span>
-                                    </div>
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <div class="form-row mt-2 ">
-                                        <div class="offset-12 col-lg-4 pt-5 justify-content-md-end">
-                                            <button class="btn1 bt">РЕГИСТРАЦИЯ</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-
-                                </div>
-
                                 </div>
                             </div>
-
+                            <div class="form-row ">
+                                <div class="col-lg-12">
+                                    <input type="text" class="effect-1" placeholder="Телефон*">
+                                    <span class="Focus-border"></span>
+                                    <small  class="text-danger">Username error message</small>
+                                </div>
+                            </div><div class="form-row ">
+                            <div class="col-lg-12">
+                                <input type="text" class="effect-1" placeholder="Имейл адрес*">
+                                <span class="Focus-border"></span>
+                                <small  class="text-danger">Username error message</small>
+                            </div>
+                        </div>
+                            <div class="form-row my-5">
+                                <div class="col-lg-12 ">
+                                    <h5>Данни за профила</h5>
+                                    <input type="text" class="effect-1" placeholder="Юзър нейм">
+                                    <span class="Focus-border"></span>
+                                    <small  class="text-danger">Username error message</small>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="password" class="effect-1" placeholder="Парола*">
+                                    <span class="Focus-border"></span>
+                                    <small  class="text-danger">Username error message</small>
+                                </div> <div class="form-row mt-2">
+                                <div class="col-lg-12">
+                                    <input type="password" class="effect-1" placeholder="Повтори парола*">
+                                    <span class="Focus-border"></span>
+                                    <small  class="text-danger">Username error message</small>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-    </section>
+            </div>
+        </div>
+    </div>
+</form>
+
+
 
 </main>
 <div class="container-fluid1 pt-1">

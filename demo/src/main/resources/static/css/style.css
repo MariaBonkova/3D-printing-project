@@ -35,3 +35,330 @@ body{
 h2{
     color: #20c997;
 }
+
+
+.title{
+    margin-bottom: 5vh;
+}
+.card{
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+}
+@media(max-width:767px){
+    .card{
+        margin: 3vh auto;
+    }
+}
+/*.cart{
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+}*/
+@media(max-width:767px){
+    .cart{
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem;
+    }
+}
+.summary{
+    background-color: rgba(16, 253, 254, 0.34);
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(219, 13, 13);
+}
+@media(max-width:767px){
+    .summary{
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem;
+    }
+}
+.summary .col-2{
+    padding: 0;
+}
+.summary .col-10
+{
+    padding: 0;
+}.row{
+     margin: 0;
+ }
+.title b{
+    font-size: 1.5rem;
+}
+.main{
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%;
+}
+.col-2, .col{
+    padding: 0 1vh;
+}
+a{
+    padding: 0 1vh;
+}
+.close{
+    margin-left: auto;
+    font-size: 0.7rem;
+}
+
+.back-to-shop{
+    margin-top: 4.5rem;
+}
+h5{
+    margin-top: 4vh;
+}
+hr{
+    margin-top: 1.25rem;
+}
+form{
+    padding: 2vh 0;
+}
+select{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+input{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+input:focus::-webkit-input-placeholder
+{
+    color:transparent;
+}
+.btn{
+    background: rgb(16, 253, 254);
+    color: #198754;;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0;
+}
+.btn:focus{
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none;
+}
+#code{
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+}
+
+.login{
+    background: url("https://pbs.twimg.com/media/BieRBHrCIAAGVyd.jpg:large") no-repeat;
+    background-size:100% 100%;
+    width: 100%;
+    height: 100vh;
+}
+#logo{
+    font-family: 'Pacifico', cursive;
+}
+.head{
+    background: linear-gradient(55deg, rgb(244, 210, 192) 4%, rgb(16, 253, 254) 100%);
+    border-radius: 5px;
+    margin-top: -50px;
+    border: #20c997;
+    -webkit-box-shadow: 12px 39px 74px 4px rgba(196,234,242,1);
+    -moz-box-shadow: 12px 39px 74px 4px rgba(196,234,242,1);
+    box-shadow: 12px 39px 74px 4px rgba(196,234,224,1);
+;
+}
+.gradient{
+    background: linear-gradient(55deg, rgb(244, 210, 192) 4%, rgb(16, 253, 254) 100%);
+
+}
+.page-header{
+    margin-top: 1rem;
+    font-size: 1.25rem;
+
+}
+.effect-1{
+    border: 0;
+    outline: none;
+    width: 100%;
+    padding: 7px 0;
+    border-bottom: 1px solid red;
+}
+
+.btn1{
+    background: rgb(16, 253, 254);
+    color: #198754;
+    outline: none;
+    border: solid;
+    border-radius: 5px;
+    height: 40px;
+    width: 145px;
+    cursor: pointer;
+}
+.btn1:hover{
+    -webkit-box-shadow: inset -179px -102px 197px -65px rgba(131,228,230,1);
+    -moz-box-shadow: inset -179px -102px 197px -65px rgba(131,228,230,1);
+    box-shadow: inset -179px -102px 197px -65px rgba(131,228,230,1);
+}
+
+plus-minus {
+    position: relative;
+}
+
+.plus {
+    position: absolute;
+    top: -4px;
+    left: 2px;
+    cursor: pointer;
+}
+
+.minus {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.vsm-text:hover {
+    color: #FF5252;
+}
+
+.book, .book-img {
+    width: 120px;
+    height: 180px;
+    border-radius: 5px;
+}
+
+.book {
+    margin: 20px 15px 5px 15px;
+}
+
+.border-top {
+    border-top: 1px solid #EEEEEE !important;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.card {
+    margin: 10px 120px;
+    padding: 40px 50px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 1px 5px 10px 1px rgba(0,0,0,0.2);
+}
+
+input, textarea {
+    background-color: rgba(16, 253, 254, 0.08);
+    padding: 8px 15px 8px 15px;
+    width: 100%;
+    border-radius: 5px !important;
+    box-sizing: border-box;
+    border: 1px solid rgba(16, 253, 254, 0.68);
+    font-size: 15px !important;
+    color: #000 !important;
+    font-weight: 300;
+}
+
+input:focus, textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(16, 253, 254, 0.34);
+    outline-width: 0;
+    font-weight: 400;
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+.pay {
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid rgba(16, 253, 254, 0.68);
+    margin: 10px 20px 10px 0px;
+    cursor: pointer;
+    box-shadow: 1px 5px 10px 1px rgba(0,0,0,0.2);
+}
+
+.gray {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+    color: #E0E0E0;
+}
+
+.gray .pay {
+    box-shadow: none;
+}
+
+#tax {
+    border-top: 1px lightgray solid;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.btn-blue {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(16, 253, 254, 0.68);
+    color: #198754;
+    padding: 8px 15px;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+
+.btn-blue:hover {
+    background-color: #db0d0d;
+    color: #000000;
+}
+
+#checkout {
+    float: left;
+}
+
+#check-amt {
+    float: right;
+}
+
+@media screen and (max-width: 768px) {
+    .book, .book-img {
+        width: 100px;
+        height: 150px;
+    }
+
+    .card {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .mob-text {
+        font-size: 13px;
+    }
+
+    .pad-left {
+        padding-left: 20px;
+    }
+}

@@ -11,8 +11,9 @@ import java.util.List;
 @Table(name = "baskets")
 public class Basket extends BaseEntity{
 
-    List<ProductCategoryEnum> buyItem;
-    private BigDecimal price;
     private UserEntity user;
-
+    private BigDecimal price;
+   private Integer quantity;
+   private BigDecimal deliveryPrice;
+    List<ProductCategoryEnum> buyItem;
 }
