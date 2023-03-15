@@ -1,7 +1,8 @@
 package com.example.demo.config;
 
-import com.example.demo.models.entity.enums.RoleEnum;
+import com.example.demo.models.entity.enums.UserRoleEnum;
 import com.example.demo.repositopy.UserRepository;
+import com.example.demo.service.ApplicationUserDetailsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -22,35 +23,36 @@ public class ApplicationBeanConfiguration {
         return new ModelMapper();
     }
 
-  /*  @Bean
+  @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
-                .requestMatchers("/pages/buyer").hasRole(RoleEnum.BUYER.name())
-                .requestMatchers("/pages/creator").hasRole(RoleEnum.CREATOR.name())
-                .anyRequest()
-                .authenticated()
+                .requestMatchers("/").permitAll()
+                .requestMatchers("/home","/users/login", "/users/register", "/users/login-error").anonymous()
+                .requestMatchers("/home","/create-item-form").authenticated()
+                .requestMatchers("/pet-catalog","/music-catalog","house-catalog").hasRole(UserRoleEnum.BUYER.name())
+                .requestMatchers("/create-item-form").hasRole(UserRoleEnum.CREATOR.name())
+
                 .and()
                 .formLogin()
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/home")
-                .failureForwardUrl("/users/login-error");
+                .failureForwardUrl("/users/login?error=true");
 
         return httpSecurity.build();
     }
 
-  /* @Bean
+    @Bean
     public UserDetailsService userDetailsService(UserRepository userRepository) {
-        return null;
-
-
+        return new ApplicationUserDetailsService(userRepository);
     }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 }

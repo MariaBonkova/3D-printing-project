@@ -4,7 +4,7 @@ import com.example.demo.models.dto.UserLoginDto;
 
 public interface UserService {
 
-    boolean login(UserLoginDto userLoginDto);
+   // boolean login(UserLoginDto userLoginDto);
 
 
 }

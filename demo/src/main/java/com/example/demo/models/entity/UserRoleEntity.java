@@ -1,6 +1,6 @@
 package com.example.demo.models.entity;
 
-import com.example.demo.models.entity.enums.RoleEnum;
+import com.example.demo.models.entity.enums.UserRoleEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,17 +10,19 @@ import jakarta.persistence.Table;
 @Table(name = "role")
 public class UserRoleEntity extends BaseEntity{
 
-    private RoleEnum role ;
+    private UserRoleEnum role ;
 
     public UserRoleEntity() {
     }
+
     @Enumerated(EnumType.STRING)
-    public RoleEnum getRole() {
+    public UserRoleEnum getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public UserRoleEntity setRole(UserRoleEnum role) {
         this.role = role;
+        return this;
     }
 
 }

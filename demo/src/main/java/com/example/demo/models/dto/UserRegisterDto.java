@@ -2,7 +2,9 @@ package com.example.demo.models.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+
 
 public class UserRegisterDto {
 
@@ -18,8 +20,8 @@ public class UserRegisterDto {
     public UserRegisterDto() {
     }
 
-    @NotBlank(message = "Required field")
-    @Size(min = 2, max = 20, message = "First name must be between 2 and 20 characters")
+    @NotBlank(message = "Задължително поле")
+    @Size(min = 2, max = 20, message = "Името трябва да съдържа от 2 до 20 символа")
     public String getFirstName() {
         return firstName;
     }
@@ -29,8 +31,8 @@ public class UserRegisterDto {
         return this;
     }
 
-    @NotBlank(message = "Required field")
-    @Size(min = 2, max = 20, message = "Last name must be between 2 and 20 characters")
+    @NotBlank(message = "Задължително поле")
+    @Size(min = 2, max = 20, message = "Фамилията трябва да съдържа от 2 до 20 символа")
     public String getLastName() {
         return lastName;
     }
@@ -40,8 +42,8 @@ public class UserRegisterDto {
         return this;
     }
 
-    @NotBlank(message = "Required field")
-    @Size(min = 2, max = 10, message = "User name must be between 2 and 10 characters")
+    @NotBlank(message = "Задължително поле")
+    @Size(min = 2, max = 10, message = "Юзър нейма трябва да съдържа от 2 до 20 символа")
     public String getUserName() {
         return userName;
     }
@@ -51,7 +53,8 @@ public class UserRegisterDto {
         return this;
     }
 
-    @NotBlank(message = "Required field")
+    @NotBlank(message = "Задължително поле")
+    @Positive(message = "Полето трябва да съдържа положителни числа")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -61,7 +64,7 @@ public class UserRegisterDto {
         return this;
     }
 
-    @NotBlank(message = "Required field")
+    @NotBlank(message = "Задължително поле")
     @Email
     public String getEmail() {
         return email;
@@ -72,8 +75,8 @@ public class UserRegisterDto {
         return this;
     }
 
-    @NotBlank(message = "Required field")
-    @Size(min = 2, max = 10, message = "Password must be between 2 and 10 characters")
+    @NotBlank(message = "Задължително поле")
+    @Size(min = 2, max = 10, message = "Паролата трябва да съдържа от 2 до 10 символа")
     public String getPassword() {
         return password;
     }
@@ -83,8 +86,8 @@ public class UserRegisterDto {
         return this;
     }
 
-    @NotBlank(message = "Required field")
-    @Size(min = 2, max = 10, message = "Password must be between 2 and 10 characters")
+    @NotBlank(message = "Задължително поле")
+    @Size(min = 2, max = 10, message = "Паролата трябва да съдържа от 2 до 10 символа")
     public String getConfirmPassword() {
         return confirmPassword;
     }

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../css/registration.css">
 </head>
 <body>
-<nav th:include="~{fragments/commons::navbar}"></nav>
+<nav th:insert="~{fragments/commons::navbar}"></nav>
 <header class="page-header gradient my-3">
         <div class="row align-items-center justify-content-center">
         <div class="col-md-5 link-danger">
@@ -41,6 +41,7 @@
                             <div class="col-lg-12 mx-auto">
                                 <div class="head text-center link-success">
                                     <h3>Регистрация на нов потребител</h3>
+
                                 </div>
                             </div>
                         </div>
@@ -52,58 +53,65 @@
                                 <div class="col-lg-12">
                                     <p class="link-danger text-center">Полетата със звездичка (*) са задължителни!</p>
                                     <h5>Лични данни</h5>
-                                    <input th:field="*{firstName}" th:errorclass="bg-danger" type="text" class="effect-1" placeholder="Име*">
+                                    <input th:field="*{firstName}"  type="text"  class="effect-1" placeholder="Име*">
                                     <span class="Focus-border"></span>
                                     <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"  class="text-danger">Username error message</small>
-
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg-12">
-                                    <input type="text" class="effect-1" placeholder="Фамилия*">
+                                    <input th:field="*{lastName}" type="text" class="effect-1" placeholder="Фамилия*">
                                     <span class="Focus-border"></span>
-                                    <small  class="text-danger">Username error message</small>
+                                    <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">Username error message</small>
                                 </div>
                             </div>
                             <div class="form-row ">
                                 <div class="col-lg-12">
-                                    <input type="text" class="effect-1" placeholder="Телефон*">
+                                    <input th:field="*{phoneNumber}"  type="text" class="effect-1" placeholder="Телефон*">
                                     <span class="Focus-border"></span>
-                                    <small  class="text-danger">Username error message</small>
+                                    <small th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger">Username error message</small>
                                 </div>
                             </div><div class="form-row ">
                             <div class="col-lg-12">
-                                <input type="text" class="effect-1" placeholder="Имейл адрес*">
+                                <input th:field="*{email}"  type="text" class="effect-1" placeholder="Имейл адрес*">
                                 <span class="Focus-border"></span>
-                                <small  class="text-danger">Username error message</small>
+                                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="text-danger">Username error message</small>
                             </div>
                         </div>
+                            <div>
+                                <small th:if="${isFound==false}" class="text-danger ">Моля въведете друг имейл адрес или юзърнейм!</small>
+                            </div>
                             <div class="form-row my-5">
                                 <div class="col-lg-12 ">
                                     <h5>Данни за профила</h5>
-                                    <input type="text" class="effect-1" placeholder="Юзър нейм">
+
+                                        <input th:field="*{userName}"  type="text" class="effect-1" placeholder="Юзър нейм*">
+
                                     <span class="Focus-border"></span>
-                                    <small  class="text-danger">Username error message</small>
+                                    <small th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger">Username error message</small>
                                 </div>
                                 <div class="col-lg-12">
-                                    <input type="password" class="effect-1" placeholder="Парола*">
+                                    <input th:field="*{password}" type="password" class="effect-1" placeholder="Парола*">
                                     <span class="Focus-border"></span>
-                                    <small  class="text-danger">Username error message</small>
+                                    <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Username error message</small>
                                 </div> <div class="form-row mt-2">
                                 <div class="col-lg-12">
-                                    <input type="password" class="effect-1" placeholder="Повтори парола*">
+                                    <input th:field="*{confirmPassword}"  type="password" class="effect-1" placeholder="Повтори парола*">
                                     <span class="Focus-border"></span>
-                                    <small  class="text-danger">Username error message</small>
+                                    <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="text-danger">Username error message</small>
+                                </div>
+                                <div class="offset-12 col-lg-4 pt-5 justify-content-md-end">
+                                    <button class="btn1">РЕГИСТРАЦИЯ</button>
                                 </div>
                             </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</form>
 
 
 

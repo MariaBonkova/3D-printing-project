@@ -2,15 +2,13 @@ package com.example.demo.models.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import org.apache.tomcat.util.descriptor.web.SecurityRoleRef;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
-@Table(name = "user")
-public class UserEntity extends BaseEntity {
-
+@Table(name = "users")
+public class UserEntity  {
+    private Long id;
     private String firstName;
     private String lastName;
     private String userName;
@@ -18,11 +16,21 @@ public class UserEntity extends BaseEntity {
     private String email;
     private String password;
     private String confirmPassword;
-    private boolean gift; // по подразбиране фолз
-    private List<UserRoleEntity> userRoleEntityList = new ArrayList<>();
+    private UserRoleEntity userRoleEntity;
+    private List<UserRoleEntity> userRoleEntityList;
 
 
     public UserEntity() {
+        this.userRoleEntityList=new ArrayList<>();   }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Column(name = "first_name", nullable = false)
@@ -43,7 +51,7 @@ public class UserEntity extends BaseEntity {
         this.lastName = lastName;
     }
 
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name", nullable = false,unique = true)
     public String getUserName() {
         return userName;
     }
@@ -91,16 +99,17 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    @Column(name = "is_gift")
-    public boolean isGift() {
-        return gift;
+    @ManyToOne
+    public UserRoleEntity getUserRoleEntity() {
+        return userRoleEntity;
     }
 
-    public void setGift(boolean gift) {
-        this.gift = gift;
+    public UserEntity setUserRoleEntity(UserRoleEntity userRoleEntity) {
+        this.userRoleEntity = userRoleEntity;
+        return this;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     public List<UserRoleEntity> getUserRoleEntityList() {
         return userRoleEntityList;
@@ -109,5 +118,23 @@ public class UserEntity extends BaseEntity {
     public UserEntity setUserRoleEntityList(List<UserRoleEntity> userRoleEntityList) {
         this.userRoleEntityList = userRoleEntityList;
         return this;
+    }
+    public UserEntity addRole(UserRoleEntity role){
+        this.userRoleEntityList.add(role);
+        return this;
+    }
+
+//тъй като ползвам сет добавям и двата метода
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(userName, that.userName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName);
     }
 }
