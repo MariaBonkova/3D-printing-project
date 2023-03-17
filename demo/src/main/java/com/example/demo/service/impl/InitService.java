@@ -8,9 +8,10 @@ import com.example.demo.repositopy.UserRoleRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class InitService {
 
     private final UserRoleRepository userRoleRepository;

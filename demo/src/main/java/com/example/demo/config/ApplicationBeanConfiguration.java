@@ -29,21 +29,21 @@ public class ApplicationBeanConfiguration {
         return new ModelMapper();
     }
 
-  @Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/","/home","/users/login", "/users/register", "/users/login-error").permitAll()
-                .requestMatchers("/home","/create-item-form").authenticated()
-                .requestMatchers("/pet-catalog","/music-catalog","house-catalog").permitAll()
+                .requestMatchers("/", "/home", "/users/login", "/users/register", "/users/login-error").permitAll()
+                .requestMatchers("/home", "/create-item-form").authenticated()
+                .requestMatchers("/pet-catalog", "/music-catalog", "house-catalog").permitAll()
                 .requestMatchers("/admins").hasRole(UserRoleEnum.ADMIN.name())
                 .requestMatchers("/moderator").hasRole(UserRoleEnum.MODERATOR.name())
                 .requestMatchers("users/login?error").authenticated()
                 .and()
-                .formLogin().loginPage("/users/login").permitAll()
-                .usernameParameter("userName")
-                .passwordParameter("password")
+                .formLogin().loginPage("/users/login").permitAll().
+                usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
+                passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/home")
                 .failureForwardUrl("/users/login-error")
                 .and()
@@ -57,7 +57,6 @@ public class ApplicationBeanConfiguration {
     public UserDetailsService userDetailsService(UserRepository userRepository) {
         return new ApplicationUserDetailsService(userRepository);
     }
-
 
 
     @Bean

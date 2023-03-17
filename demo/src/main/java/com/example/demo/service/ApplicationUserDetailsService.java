@@ -3,13 +3,14 @@ package com.example.demo.service;
 import com.example.demo.models.entity.UserEntity;
 import com.example.demo.models.entity.UserRoleEntity;
 import com.example.demo.repositopy.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import java.util.List;
 
@@ -22,17 +23,18 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return
                 userRepository.
-                        findUserEntityByEmail(username).
+                        findUserEntityByUserName(username).
                         map(this::map).
                         orElseThrow(() -> new UsernameNotFoundException("User with name " + username + " not found!"));
     }
 
     private UserDetails map(UserEntity userEntity) {
         return new User(
-                userEntity.getEmail(),
+                userEntity.getUserName(),
                 userEntity.getPassword(),
                 extractAuthorities(userEntity)
         );

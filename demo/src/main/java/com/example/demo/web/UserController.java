@@ -2,11 +2,9 @@ package com.example.demo.web;
 
 import com.example.demo.models.dto.UserLoginDto;
 import com.example.demo.models.dto.UserRegisterDto;
-import com.example.demo.service.AuthService;
 import com.example.demo.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContext;
@@ -29,14 +27,13 @@ public class UserController {
 
     private final UserServiceImpl userServiceImpl;
     private final ModelMapper modelMapper;
-    private final AuthService authService;
+
     private DelegatingSecurityContextRepository securityContextRepository;
 
     public UserController(
-            UserServiceImpl userServiceImpl, ModelMapper modelMapper, AuthService authService) {
+            UserServiceImpl userServiceImpl, ModelMapper modelMapper) {
         this.userServiceImpl = userServiceImpl;
         this.modelMapper = modelMapper;
-        this.authService = authService;
     }
 
     @ModelAttribute("userRegisterDto")
@@ -79,19 +76,10 @@ public class UserController {
     @PostMapping("/register")
     public String registerPost(HttpServletRequest request,
                                HttpServletResponse response,
-                               @Valid UserRegisterDto userRegisterDto,
-                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors() || !this.authService.register(userRegisterDto)) {
-            redirectAttributes.addFlashAttribute("userRegisterDto", userRegisterDto)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDto", bindingResult)
-                    .addFlashAttribute("isFound",false);
+                               @Valid UserRegisterDto userRegisterDto){
 
-
-            return "redirect:register";
-        }
         userServiceImpl.registerUser(userRegisterDto, successfulAuth -> {
 
-            // populating security context
             SecurityContextHolderStrategy strategy = SecurityContextHolder.getContextHolderStrategy();
 
             SecurityContext context = strategy.createEmptyContext();
