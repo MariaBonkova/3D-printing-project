@@ -1,11 +1,19 @@
 package com.example.demo.web;
 
+import com.example.demo.models.dto.UserLoginDto;
 import com.example.demo.models.dto.UserRegisterDto;
 import com.example.demo.service.AuthService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.impl.UserServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextHolderStrategy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.DelegatingSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,28 +27,45 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserService userService;
+    private final UserServiceImpl userServiceImpl;
     private final ModelMapper modelMapper;
     private final AuthService authService;
+    private DelegatingSecurityContextRepository securityContextRepository;
 
-    public UserController(UserService userService, ModelMapper modelMapper, AuthService authService) {
-        this.userService = userService;
+    public UserController(
+            UserServiceImpl userServiceImpl, ModelMapper modelMapper, AuthService authService) {
+        this.userServiceImpl = userServiceImpl;
         this.modelMapper = modelMapper;
         this.authService = authService;
     }
+
     @ModelAttribute("userRegisterDto")
     private UserRegisterDto initRegisterDto(){
         return new UserRegisterDto();
     }
+    @ModelAttribute("userLoginDto")
+    private UserLoginDto initLoginDto(){
+        return new UserLoginDto();
+    }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        if (!model.containsAttribute("bad_credentials")) {
+            model.addAttribute("bad_credentials", true);
+        }
         return "login";
     }
 
-    @PostMapping("/login")
-    public String loginPost( ) {
-        return "redirect:/home";
+
+    @PostMapping("/users/login-error")
+    public String onFailedLogin(
+            @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
+            RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+
+        return "redirect:login";
     }
 
     @GetMapping("/register")
@@ -52,7 +77,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerPost(@Valid UserRegisterDto userRegisterDto,
+    public String registerPost(HttpServletRequest request,
+                               HttpServletResponse response,
+                               @Valid UserRegisterDto userRegisterDto,
                                BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors() || !this.authService.register(userRegisterDto)) {
             redirectAttributes.addFlashAttribute("userRegisterDto", userRegisterDto)
@@ -62,15 +89,25 @@ public class UserController {
 
             return "redirect:register";
         }
+        userServiceImpl.registerUser(userRegisterDto, successfulAuth -> {
+
+            // populating security context
+            SecurityContextHolderStrategy strategy = SecurityContextHolder.getContextHolderStrategy();
+
+            SecurityContext context = strategy.createEmptyContext();
+            context.setAuthentication(successfulAuth);
+
+            strategy.setContext(context);
+
+
+            securityContextRepository.saveContext(context, request, response);
+        });
+
         return "redirect:/users/login";
 
     }
 
-    @GetMapping("/logout")
-    public String logout(HttpSession httpSession) {
-        httpSession.invalidate();
-        return "redirect:/";
-    }
+
 
 
 

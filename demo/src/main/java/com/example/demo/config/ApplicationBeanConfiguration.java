@@ -18,6 +18,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 
 public class ApplicationBeanConfiguration {
+    private final UserRepository userRepository;
+
+    public ApplicationBeanConfiguration(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
@@ -28,18 +34,21 @@ public class ApplicationBeanConfiguration {
         httpSecurity
                 .authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/").permitAll()
-                .requestMatchers("/home","/users/login", "/users/register", "/users/login-error").anonymous()
+                .requestMatchers("/","/home","/users/login", "/users/register", "/users/login-error").permitAll()
                 .requestMatchers("/home","/create-item-form").authenticated()
-                .requestMatchers("/pet-catalog","/music-catalog","house-catalog").hasRole(UserRoleEnum.BUYER.name())
-                .requestMatchers("/create-item-form").hasRole(UserRoleEnum.CREATOR.name())
-
+                .requestMatchers("/pet-catalog","/music-catalog","house-catalog").permitAll()
+                .requestMatchers("/admins").hasRole(UserRoleEnum.ADMIN.name())
+                .requestMatchers("/moderator").hasRole(UserRoleEnum.MODERATOR.name())
+                .requestMatchers("users/login?error").authenticated()
                 .and()
-                .formLogin()
-                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
-                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+                .formLogin().loginPage("/users/login").permitAll()
+                .usernameParameter("userName")
+                .passwordParameter("password")
                 .defaultSuccessUrl("/home")
-                .failureForwardUrl("/users/login?error=true");
+                .failureForwardUrl("/users/login-error")
+                .and()
+                .logout().logoutSuccessUrl("/users/logout").logoutSuccessUrl("/home")
+                .invalidateHttpSession(true);
 
         return httpSecurity.build();
     }

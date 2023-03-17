@@ -1,5 +1,8 @@
 package com.example.demo.models.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class UserLoginDto {
     private String userName;
     private String password;
@@ -7,6 +10,8 @@ public class UserLoginDto {
     public UserLoginDto() {
     }
 
+    @NotBlank(message = "Задължително поле")
+    @Size(min = 2, max = 10, message = "Юзър нейма трябва да съдържа от 2 до 20 символа")
     public String getUserName() {
         return userName;
     }
@@ -16,6 +21,8 @@ public class UserLoginDto {
         return this;
     }
 
+    @NotBlank(message = "Задължително поле")
+    @Size(min = 2, max = 10, message = "Паролата трябва да съдържа от 2 до 10 символа")
     public String getPassword() {
         return password;
     }

@@ -39,8 +39,7 @@ public class AuthService {
             return false;
         }
 
-        UserEntity user = modelMapper.map(userRegisterDto, UserEntity.class,
-                passwordEncoder.encode(userRegisterDto.getPassword()));
+        UserEntity user = modelMapper.map(userRegisterDto, UserEntity.class);
 
 
         this.userRepository.save(user);
