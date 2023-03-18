@@ -11,7 +11,7 @@ public class UserEntity  {
     private Long id;
     private String firstName;
     private String lastName;
-    private String userName;
+    private String username;
     private String phoneNumber;
     private String email;
     private String password;
@@ -51,13 +51,13 @@ public class UserEntity  {
         this.lastName = lastName;
     }
 
-    @Column(name = "user_name", nullable = false,unique = true)
-    public String getUserName() {
-        return userName;
+    @Column(name = "username", nullable = false,unique = true)
+    public String getUsername() {
+        return username;
     }
 
-    public UserEntity setUserName(String userName) {
-        this.userName = userName;
+    public UserEntity setUsername(String username) {
+        this.username = username;
         return this;
     }
 
@@ -130,11 +130,11 @@ public class UserEntity  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(userName, that.userName);
+        return Objects.equals(id, that.id) && Objects.equals(username, that.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userName);
+        return Objects.hash(id, username);
     }
 }

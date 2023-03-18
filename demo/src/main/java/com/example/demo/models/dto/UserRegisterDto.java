@@ -10,7 +10,7 @@ public class UserRegisterDto {
 
     private String firstName;
     private String lastName;
-    private String userName;
+    private String username;
     private String phoneNumber;
     private String email;
     private String password;
@@ -44,12 +44,12 @@ public class UserRegisterDto {
 
     @NotBlank(message = "Задължително поле")
     @Size(min = 2, max = 10, message = "Юзър нейма трябва да съдържа от 2 до 20 символа")
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public UserRegisterDto setUserName(String userName) {
-        this.userName = userName;
+    public UserRegisterDto setUsername(String username) {
+        this.username = username;
         return this;
     }
 

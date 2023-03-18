@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -22,7 +23,7 @@
         <div class="container py-5 ">
             <form  th:action="@{/users/login}"
                    th:method="post"
-                   th:object="${userLoginDto}">
+                   >
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
@@ -38,20 +39,28 @@
                             <div class="form p-3">
                                 <div class="form-row mt-5">
                                     <div class="col-lg-12">
-                                            <input th:field="*{userName}" th:value="${userName}" type="text" class="effect-1"  placeholder="Юзър нейм">
+                                            <input  value="username"
+                                                    id="username"
+                                                    name="username"
+                                                    th:value="${username}"
+                                                    min="2"
+                                                    max="10"
+                                                    type="text"
+                                                    class="effect-1"
+                                                    placeholder="Юзър нейм">
                                         <span class="Focus-border"></span>
-                                        <small th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger">Username error message</small>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <small th:if="${bad_credentials==false}" class="text-danger ">Грешен юзърнейм или парола!</small>
-                            </div>
+                            <p th:if="${bad_credentials}"
+                               class="text-danger">
+                                Грешен юзърнейм или парола!
+                            </p>
                             <div class="form-row mt-2">
                                 <div class="col-lg-12">
-                                    <input th:field="*{password}"  type="password" class="effect-1" placeholder="   Парола">
+                                    <input  name="password" type="password" min="2"
+                                           max="10" class="effect-1" placeholder="   Парола">
                                     <span class="Focus-border"></span>
-                                    <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Username error message</small>
                                 </div>
                                 <div class="offset-12 col-lg-4 pt-5 justify-content-md-end">
                                     <button class="btn1">ВХОД</button>

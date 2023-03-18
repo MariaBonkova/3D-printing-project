@@ -1,6 +1,5 @@
 package com.example.demo.web;
 
-import com.example.demo.models.dto.UserLoginDto;
 import com.example.demo.models.dto.UserRegisterDto;
 import com.example.demo.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.context.DelegatingSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,29 +38,22 @@ public class UserController {
     private UserRegisterDto initRegisterDto(){
         return new UserRegisterDto();
     }
-    @ModelAttribute("userLoginDto")
-    private UserLoginDto initLoginDto(){
-        return new UserLoginDto();
-    }
 
     @GetMapping("/login")
-    public String login(Model model) {
-        if (!model.containsAttribute("bad_credentials")) {
-            model.addAttribute("bad_credentials", true);
-        }
-        return "login";
+    public String login() {
+               return "login";
     }
 
 
-    @PostMapping("/users/login-error")
+    @PostMapping("/login-error")
     public String onFailedLogin(
-            @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String userName,
+            @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
             RedirectAttributes redirectAttributes) {
 
-        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, userName);
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
         redirectAttributes.addFlashAttribute("bad_credentials", true);
 
-        return "redirect:login";
+        return "redirect:/users/login";
     }
 
     @GetMapping("/register")
@@ -76,7 +67,7 @@ public class UserController {
     @PostMapping("/register")
     public String registerPost(HttpServletRequest request,
                                HttpServletResponse response,
-                               @Valid UserRegisterDto userRegisterDto){
+                               UserRegisterDto userRegisterDto){
 
         userServiceImpl.registerUser(userRegisterDto, successfulAuth -> {
 

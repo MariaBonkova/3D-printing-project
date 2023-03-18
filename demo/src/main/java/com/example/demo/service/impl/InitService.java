@@ -61,7 +61,7 @@ public class InitService {
         adminUser.setEmail("adminov@print.com");
         adminUser.setFirstName("Иван");
         adminUser.setLastName("Админа");
-        adminUser.setUserName("admin");
+        adminUser.setUsername("admin");
         adminUser.setPassword(passwordEncoder.encode("print"));
         adminUser.setConfirmPassword(passwordEncoder.encode("print"));
         adminUser.setPhoneNumber("01235556");
@@ -79,7 +79,7 @@ public class InitService {
         moderatorUser.setEmail("moderator@print.com");
         moderatorUser.setFirstName("Мишо");
         moderatorUser.setLastName("Модератора");
-        moderatorUser.setUserName("moderator");
+        moderatorUser.setUsername("moderator");
         moderatorUser.setPassword(passwordEncoder.encode("print"));
         moderatorUser.setConfirmPassword(passwordEncoder.encode("print"));
         moderatorUser.setPhoneNumber("011485");
@@ -94,7 +94,7 @@ public class InitService {
         normalUser.setEmail("user@example.com");
         normalUser.setFirstName("Ангел");
         normalUser.setLastName("Юзеров");
-        normalUser.setUserName("ani");
+        normalUser.setUsername("ani");
         normalUser.setPassword(passwordEncoder.encode("print"));
         normalUser.setConfirmPassword(passwordEncoder.encode("print"));
         normalUser.setPhoneNumber("011485");

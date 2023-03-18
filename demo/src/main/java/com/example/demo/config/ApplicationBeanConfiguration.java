@@ -14,9 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.SecurityContextRepository;
 
 @Configuration
-
 public class ApplicationBeanConfiguration {
     private final UserRepository userRepository;
 
@@ -31,6 +31,7 @@ public class ApplicationBeanConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+
         httpSecurity
                 .authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
@@ -47,8 +48,12 @@ public class ApplicationBeanConfiguration {
                 .defaultSuccessUrl("/home")
                 .failureForwardUrl("/users/login-error")
                 .and()
-                .logout().logoutSuccessUrl("/users/logout").logoutSuccessUrl("/home")
+                .logout()
+                .logoutSuccessUrl("/users/logout")
+                .logoutSuccessUrl("/home")
                 .invalidateHttpSession(true);
+
+
 
         return httpSecurity.build();
     }
