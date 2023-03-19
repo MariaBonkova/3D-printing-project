@@ -14,6 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.DelegatingSecurityContextRepository;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 
 @Configuration
@@ -35,22 +38,28 @@ public class ApplicationBeanConfiguration {
         httpSecurity
                 .authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/", "/home", "/users/login", "/users/register", "/users/login-error").permitAll()
-                .requestMatchers("/home", "/create-item-form").authenticated()
-                .requestMatchers("/pet-catalog", "/music-catalog", "house-catalog").permitAll()
+                .requestMatchers("/", "/home", "/users/login", "/users/register", "/users/login-error",
+               "house-catalog", "/music-catalog","/pets-catalog" ,"/materials").permitAll()
+                .requestMatchers("/create-item-form").authenticated()
                 .requestMatchers("/admins").hasRole(UserRoleEnum.ADMIN.name())
                 .requestMatchers("/moderator").hasRole(UserRoleEnum.MODERATOR.name())
-                .requestMatchers("users/login?error").authenticated()
+                .anyRequest()
+                .authenticated()
                 .and()
-                .formLogin().loginPage("/users/login").permitAll().
+                .formLogin()
+                .loginPage("/users/login")
+                .failureUrl("/users/login-error")
+                .permitAll().
                 usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                 passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/home")
                 .failureForwardUrl("/users/login-error")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/users/logout")
+                .logoutUrl("/users/logout")
                 .logoutSuccessUrl("/home")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
 
 
@@ -68,4 +77,13 @@ public class ApplicationBeanConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public SecurityContextRepository securityContextRepository() {
+        return new DelegatingSecurityContextRepository(
+                new RequestAttributeSecurityContextRepository(),
+                new HttpSessionSecurityContextRepository()
+        );
+    }
 }
+
