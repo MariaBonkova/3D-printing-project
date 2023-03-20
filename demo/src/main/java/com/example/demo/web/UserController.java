@@ -4,13 +4,12 @@ import com.example.demo.models.dto.UserRegisterDto;
 import com.example.demo.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextHolderStrategy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.context.DelegatingSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,14 +24,14 @@ public class UserController {
 
     private final UserServiceImpl userServiceImpl;
     private final ModelMapper modelMapper;
+    private final SecurityContextRepository securityContextRepository;
 
-    private DelegatingSecurityContextRepository securityContextRepository;
-
-    public UserController(
-            UserServiceImpl userServiceImpl, ModelMapper modelMapper) {
+    public UserController(UserServiceImpl userServiceImpl, ModelMapper modelMapper, SecurityContextRepository securityContextRepository) {
         this.userServiceImpl = userServiceImpl;
         this.modelMapper = modelMapper;
+        this.securityContextRepository = securityContextRepository;
     }
+
 
     @ModelAttribute("userRegisterDto")
     private UserRegisterDto initRegisterDto(){

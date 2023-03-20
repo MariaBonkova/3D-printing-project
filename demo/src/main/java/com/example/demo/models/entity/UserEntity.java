@@ -51,7 +51,7 @@ public class UserEntity  {
         this.lastName = lastName;
     }
 
-    @Column(name = "username", nullable = false,unique = true)
+    @Column(nullable = false,unique = true)
     public String getUsername() {
         return username;
     }

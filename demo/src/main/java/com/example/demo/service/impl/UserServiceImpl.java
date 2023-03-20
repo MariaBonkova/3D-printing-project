@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(userEntity);
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername(registrationDTO.getEmail());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(registrationDTO.getUsername());
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 userDetails,
