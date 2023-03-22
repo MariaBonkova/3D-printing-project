@@ -5,6 +5,7 @@ public enum MaterialComposition {
     ABS,
     NYLON,
     PETG,
+    HIPS,
     POLYCARBONATE,
     ASA
 }

@@ -4,6 +4,7 @@ import com.example.demo.models.dto.UserRegisterDto;
 import com.example.demo.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,9 +68,15 @@ public class UserController {
     @PostMapping("/register")
     public String registerPost(HttpServletRequest request,
                                HttpServletResponse response,
-                               UserRegisterDto userRegisterDto){
+                               @Valid UserRegisterDto userRegisterDto,
+                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if(bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userRegisterDto", userRegisterDto)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDto", bindingResult);
 
-        userServiceImpl.registerUser(userRegisterDto, successfulAuth -> {
+            return "redirect:register";
+        }
+            userServiceImpl.registerUser(userRegisterDto, successfulAuth -> {
 
             SecurityContextHolderStrategy strategy = SecurityContextHolder.getContextHolderStrategy();
 

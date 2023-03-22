@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -28,9 +28,6 @@
         <div class="row">
             <div class="col-sm-6">
                 <form>
-                    <input class="form-control" type="text" placeholder="Вид на животното /куче, коте, птица.../"
-                           aria-label="default input example">
-                    <label for="formFile" class="form-label"></label>
                     <input class="form-control" type="text" placeholder="Вид на желаният предмет /къща, играчка.../"
                            aria-label="default input example">
                     <label for="formFile" class="form-label"></label>
@@ -45,10 +42,11 @@
                         <option value="ASA">
                     </datalist>
                     <label for="formFile" class="form-label"></label>
-                    <input class="form-control" type="text" placeholder="Размер /височина, ширина, дължина/"
+                    <input class="form-control" type="text" placeholder="Размер /в килограми/"
                            aria-label="default input example">
                     <label for="formFile" class="form-label"></label>
-                    <input class="form-control" type="text" placeholder="Допълнително описание..."
+                    <input class="form-control" type="text"
+                           placeholder="Допълнително описание, вид на животното /куче, коте, птица.../"
                            aria-label="default input example">
                     <label for="formFile" class="form-label"></label>
                     <input type="color" class="form-control form-control-color" id="exampleColorInput"
@@ -58,9 +56,7 @@
                     <label for="formFile" class="form-label"></label>
                     <input class="form-control" type="file">
                     <label for="formFile" class="form-label"></label>
-                    <input class="form-control" type="text" placeholder="Цена" aria-label="default input example">
                     <a href="#" class="btn btn-success">Потвърди поръчката</a>
-
                 </form>
             </div>
             <div class="col-sm-6">
@@ -71,9 +67,6 @@
                          alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Желаният предмет</h5>
-                        <p class="card-text">Материал</p>
-                        <p class="card-text">Размери</p>
-                        <p class="card-text">Описание</p>
                         <p class="card-text">Цена</p>
                         <a href="#" class="btn btn-success">Направи поръчка</a>
                         <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-danger">Одобри поръчка</a>
@@ -106,7 +99,7 @@
                         <option value="ASA">
                     </datalist>
                     <label for="formFile" class="form-label"></label>
-                    <input class="form-control" type="text" placeholder="Размер /височина, ширина, дължина/"
+                    <input class="form-control" type="text" placeholder="Размер /в килограми/"
                            aria-label="default input example">
                     <label for="formFile" class="form-label"></label>
                     <input class="form-control" type="text" placeholder="Допълнително описание..."

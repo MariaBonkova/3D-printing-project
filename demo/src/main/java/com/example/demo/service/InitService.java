@@ -1,15 +1,17 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
 import com.example.demo.models.entity.UserEntity;
 import com.example.demo.models.entity.UserRoleEntity;
 import com.example.demo.models.entity.enums.UserRoleEnum;
 import com.example.demo.repositopy.UserRepository;
 import com.example.demo.repositopy.UserRoleRepository;
+import com.example.demo.service.MaterialService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 @Service
 public class InitService {
@@ -17,18 +19,24 @@ public class InitService {
     private final UserRoleRepository userRoleRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MaterialService materialService;
 
 
 
     public InitService(UserRoleRepository userRoleRepository,
-                           UserRepository userRepository,
-                           PasswordEncoder passwordEncoder,
-                           @Value("${app.default.password}") String defaultPassword) {
+                       UserRepository userRepository,
+                       PasswordEncoder passwordEncoder,
+                       @Value("${app.default.password}") String defaultPassword, MaterialService materialService) {
         this.userRoleRepository = userRoleRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
 
 
+        this.materialService = materialService;
+    }
+
+    public void initMaterialPrice(){
+       materialService.initPrice();
     }
 
 

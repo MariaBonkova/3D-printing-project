@@ -1,7 +1,7 @@
 package com.example.demo.init;
 
+import com.example.demo.service.InitService;
 import com.example.demo.service.RoleService;
-import com.example.demo.service.impl.InitService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,5 +21,6 @@ public class DataBaseInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         initService.init();
+        initService.initMaterialPrice();
     }
 }
