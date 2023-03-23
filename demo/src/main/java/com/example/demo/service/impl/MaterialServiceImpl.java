@@ -1,9 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.models.entity.CreateOfferEntity;
 import com.example.demo.models.entity.MaterialEntity;
 import com.example.demo.models.entity.enums.MaterialComposition;
 import com.example.demo.repositopy.MaterialRepository;
+import com.example.demo.service.MaterialService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

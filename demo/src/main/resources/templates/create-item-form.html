@@ -27,19 +27,17 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-6">
-                <form>
+                <form th:action="@{/create-item-form}"
+                      th:method="post"
+                      th:object="${createOfferDto}">
                     <input class="form-control" type="text" placeholder="Вид на желаният предмет /къща, играчка.../"
                            aria-label="default input example">
                     <label for="formFile" class="form-label"></label>
                     <input class="form-control" list="datalistOptions" id="exampleDataList"
                            placeholder="Вид материал...">
                     <datalist id="datalistOptions">
-                        <option value="ABS">
-                        <option value="HIPS">
-                        <option value="PETG">
-                        <option value="Nylon">
-                        <option value="POLYCARBONATE">
-                        <option value="ASA">
+                        <option th:each="c : ${T(com.example.demo.models.entity.enums.MaterialComposition).values()}"
+                                th:value="${c}" th:text="${c}" value="ABS">
                     </datalist>
                     <label for="formFile" class="form-label"></label>
                     <input class="form-control" type="text" placeholder="Размер /в килограми/"
@@ -56,25 +54,30 @@
                     <label for="formFile" class="form-label"></label>
                     <input class="form-control" type="file">
                     <label for="formFile" class="form-label"></label>
-                    <a href="#" class="btn btn-success">Потвърди поръчката</a>
+                    <a th:href="@{/create-item-form/view}" class="btn btn-success">Потвърди поръчката</a>
                 </form>
             </div>
-            <div class="col-sm-6">
-                <div class="card" style="width: 28rem;">
-                    <img class="card-img-top"
-                         width="400" height="300"
-                         src="https://www.doggies.com/blog/wp-content/uploads/2017/10/pet-montage-1024x1024.jpg"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Желаният предмет</h5>
-                        <p class="card-text">Цена</p>
-                        <a href="#" class="btn btn-success">Направи поръчка</a>
-                        <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-danger">Одобри поръчка</a>
-                        <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-danger">Изтриване</a>
-
+            <form
+                    th:action="@{/create-item-form/view}"
+                    th:method="get"
+                    th:object="${createOfferView}">
+                <div class="col-sm-6">
+                    <div class="card" style="width: 28rem;">
+                        <img class="card-img-top"
+                             width="400" height="300"
+                             src="https://www.doggies.com/blog/wp-content/uploads/2017/10/pet-montage-1024x1024.jpg"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="*{productName}">Желаният предмет</h5>
+                            <p class="card-text" th:text="*{price}">Цена</p>
+                            <a th:href="@{/basket}" class="btn btn-success">Направи поръчка</a>
+                            <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-danger">Одобри поръчка</a>
+                            <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-danger">Изтриване</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
         </div>
 
         <p class="fs-6 fw-bold text-sm-center text-danger">При получаване на заявката нашият екип ще се свърже с
@@ -128,7 +131,7 @@
                         <p class="card-text">Материал</p>
                         <p class="card-text">Размери</p>
                         <p class="card-text">Описание</p>
-                        <p class="card-text">Цена</p>
+                        <p class="card-text" >Цена</p>
                         <a href="#" class="btn btn-success">Направи поръчка</a>
                         <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-danger">Одобри поръчка</a>
                         <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-danger">Изтриване</a>

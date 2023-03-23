@@ -14,6 +14,7 @@ public class CreateOfferEntity extends BaseEntity {
     private BigDecimal quantity;
     private String description;
     private BigDecimal price;
+    private String urlImage;
 
     public CreateOfferEntity() {
     }
@@ -65,6 +66,15 @@ public class CreateOfferEntity extends BaseEntity {
 
     public CreateOfferEntity setPrice(BigDecimal price) {
         this.price = price;
+        return this;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public CreateOfferEntity setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
         return this;
     }
 }

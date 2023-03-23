@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.models.entity.CreateOfferEntity;
 import com.example.demo.models.entity.enums.UserRoleEnum;
 import com.example.demo.repositopy.UserRepository;
 import com.example.demo.service.ApplicationUserDetailsService;
@@ -30,6 +31,10 @@ public class ApplicationBeanConfiguration {
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
+    }
+    @Bean
+    public CreateOfferEntity createOfferEntity(){
+        return new CreateOfferEntity();
     }
 
     @Bean
