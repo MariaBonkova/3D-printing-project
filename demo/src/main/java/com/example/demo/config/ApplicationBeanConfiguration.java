@@ -32,10 +32,7 @@ public class ApplicationBeanConfiguration {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
-    @Bean
-    public CreateOfferEntity createOfferEntity(){
-        return new CreateOfferEntity();
-    }
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {

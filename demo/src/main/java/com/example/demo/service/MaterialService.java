@@ -8,5 +8,6 @@ public interface MaterialService {
     void initPrice();
 
     MaterialComposition findByName(MaterialComposition materialComposition);
+
     BigDecimal findMaterialEntitiesByPrice(String name);
 }
