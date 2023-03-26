@@ -39,7 +39,7 @@
           <p class="card-text"></p>
           <p class="card-text">Цена - 200лв</p>
           <a href="#" class="btn btn-success">Купи</a>
-          <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+          <a sec:authorize="hasRole('MODERATOR')" th:href="@{/music-catalog/delete/{id}(id =*{id})}" class="btn btn-success">Изтрий</a>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
           <p class="card-text"></p>
           <p class="card-text">Цена - 100лв</p>
           <a href="#" class="btn btn-success">Купи</a>
-          <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+          <a sec:authorize="hasRole('MODERATOR')" th:href="@{/music-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
         </div>
       </div>
@@ -71,7 +71,7 @@
             <p class="card-text"></p>
             <p class="card-text">Цена - 100лв</p>
             <a href="#" class="btn btn-success">Купи</a>
-            <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+            <a sec:authorize="hasRole('MODERATOR')" th:href="@{/music-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
           </div>
         </div>
@@ -86,7 +86,7 @@
             <p class="card-text"></p>
             <p class="card-text">Цена - 300лв</p>
             <a href="#" class="btn btn-success">Купи</a>
-            <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+            <a sec:authorize="hasRole('MODERATOR')"th:href="@{/music-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@
           <p class="card-text"></p>
           <p class="card-text">Цена - 100лв</p>
           <a href="#" class="btn btn-success">Купи</a>
-          <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+          <a sec:authorize="hasRole('MODERATOR')" th:href="@{/music-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
         </div>
       </div>
@@ -118,7 +118,7 @@
           <p class="card-text"></p>
           <p class="card-text">Цена -150лв</p>
           <a href="#" class="btn btn-success">Купи</a>
-          <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+          <a sec:authorize="hasRole('MODERATOR')" th:href="@{/music-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
         </div>
       </div>

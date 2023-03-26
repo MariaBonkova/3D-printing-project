@@ -38,7 +38,7 @@
                     <p class="card-text">Безвреден кокал за четкане на зъбите!</p>
                     <p class="card-text">Цена - 15лв</p>
                     <a href="#" class="btn btn-success">Купи</a>
-                    <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+                    <a sec:authorize="hasRole('MODERATOR')" th:href="@{/pets-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     <p class="card-text">Безвредна играчка - топка!</p>
                     <p class="card-text">Цена - 10лв</p>
                     <a href="#" class="btn btn-success">Купи</a>
-                    <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+                    <a sec:authorize="hasRole('MODERATOR')" th:href="@{/pets-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
                 </div>
             </div>
@@ -71,7 +71,7 @@
                         <p class="card-text">Занимателна кръгла играчка!</p>
                         <p class="card-text">Цена - 25лв</p>
                         <a href="#" class="btn btn-success">Купи</a>
-                        <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+                        <a sec:authorize="hasRole('MODERATOR')" th:href="@{/pets-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         <p class="card-text">Занимателна писта с топче!</p>
                         <p class="card-text">Цена - 50лв</p>
                         <a href="#" class="btn btn-success">Купи</a>
-                        <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+                        <a sec:authorize="hasRole('MODERATOR')" th:href="@{/pets-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                         <p class="card-text">Къщичка за игра!</p>
                         <p class="card-text">Цена - 55лв</p>
                         <a href="#" class="btn btn-success">Купи</a>
-                        <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
+                        <a sec:authorize="hasRole('MODERATOR')" th:href="@{/pets-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
 
                     </div>
                 </div>
@@ -119,8 +119,7 @@
                         <p class="card-text">Къщичка за игра!</p>
                         <p class="card-text">Цена - 55лв</p>
                         <a href="#" class="btn btn-success">Купи</a>
-                        <a sec:authorize="hasRole('MODERATOR')" href="#" class="btn btn-success">Изтрий</a>
-
+                        <a sec:authorize="hasRole('MODERATOR')"th:href="@{/pets-catalog/delete/{id}(id =*{id})}"  class="btn btn-success">Изтрий</a>
                     </div>
                 </div>
             </div>

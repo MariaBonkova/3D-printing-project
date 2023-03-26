@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.models.dto.CreateOfferDto;
 import com.example.demo.models.entity.CreateOfferEntity;
 import com.example.demo.repositopy.CreateOfferRepository;
 import com.example.demo.service.CreateOfferService;
@@ -7,33 +8,45 @@ import com.example.demo.service.MaterialService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Service
 public class CreateOfferServiceImpl implements CreateOfferService {
 
 
-private final MaterialService materialService;
-   private final CreateOfferRepository createOfferRepository;
-
+    private final MaterialService materialService;
+    private final CreateOfferRepository createOfferRepository;
 
     public CreateOfferServiceImpl(MaterialService materialService, CreateOfferRepository createOfferRepository) {
-     this.materialService = materialService;
+        this.materialService = materialService;
         this.createOfferRepository = createOfferRepository;
+
     }
 
-    public BigDecimal totalProductPrice(String name){
 
-        BigDecimal materialEntitiesByPrice = materialService.findMaterialEntitiesByPrice(name);
-      //  BigDecimal dtoQuantity = createOfferDto.getQuantity();
-      //  BigDecimal price = materialEntitiesByPrice * dtoQuantity;
+    public void createOffer(CreateOfferDto createOfferDto){
 
-return materialEntitiesByPrice;
+        BigDecimal materialEntitiesByPrice = materialService.findMaterialEntitiesByPrice(createOfferDto.getProductName());
+
+        CreateOfferEntity createOfferEntity = new CreateOfferEntity();
+        createOfferEntity.setProductName(createOfferDto.getProductName());
+        createOfferEntity.setMaterialComposition(createOfferDto.getMaterialComposition());
+        createOfferEntity.setQuantity(createOfferDto.getQuantity());
+        createOfferEntity.setPrice(createOfferDto.getQuantity().multiply(materialEntitiesByPrice));
+        createOfferEntity.setUrlImage(createOfferDto.getUrlImage());
+
+        createOfferRepository.save(createOfferEntity);
+
+
+
     }
 
-    @Override
-    public void addPrice() {
-       CreateOfferEntity createOfferEntity = new CreateOfferEntity();
-       createOfferRepository.findById(createOfferEntity.getId());
-       createOfferEntity.setPrice(totalProductPrice(createOfferEntity.getProductName()));
+    public BigDecimal getTotalPrice(CreateOfferEntity createOfferEntity){
+        Optional<CreateOfferEntity> byId = createOfferRepository.findById(createOfferEntity.getId());
+        return byId.get().getPrice();
     }
+
+
+
+
 }

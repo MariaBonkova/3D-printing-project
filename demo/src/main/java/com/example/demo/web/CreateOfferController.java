@@ -50,21 +50,25 @@ public class CreateOfferController {
         return "create-item-form";
     }
 
-    @GetMapping("/create-item-form/view")
-    public String viewItemForm(Model model, CreateOfferView createOfferView) {
+    @PostMapping("/create-item-form/view")
+    public String viewItemForm(Model model, CreateOfferEntity createOfferEntity) {
 
-        modelMapper.map(createOfferDto(),CreateOfferView.class);
+        model.addAttribute("productName", createOfferEntity.getProductName());
+        model.addAttribute("price", createOfferService.getTotalPrice(createOfferEntity));
 
-        model.addAttribute("productName", createOfferView.getProductName());
-        model.addAttribute("price", createOfferService.totalProductPrice(createOfferDto().getMaterialComposition().name()));
+        return "redirect:/create-item-form/view";
+    }
+   @GetMapping("/create-item-form/view")
+    public String createItemForms(Model model, CreateOfferEntity createOfferEntity) {
 
-      createOfferService.addPrice();
+            model.addAttribute("productName", createOfferEntity.getProductName());
+            model.addAttribute("price", createOfferService.getTotalPrice(createOfferEntity));
 
-        return "redirect:/basket";
+            return "create-item-form";
     }
 
 
-    @PostMapping("/create-item-form/view")
+    @PostMapping("/create-item-form")
     public String createOffer(@Valid CreateOfferDto createOfferDto,
                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -74,7 +78,7 @@ public class CreateOfferController {
             return "redirect:create-item-form";
         }
 
-        createOfferRepository.save (modelMapper.map(createOfferDto, CreateOfferEntity.class));
+        createOfferService.createOffer(createOfferDto);
 
         return "redirect:/create-item-form/view";
     }
