@@ -45,26 +45,9 @@ public class CreateOfferController {
         return new CreateOfferView();
     }
 
-    @GetMapping("/create-item-form")
+   @GetMapping("/create-item-form")
     public String createItemForm() {
         return "create-item-form";
-    }
-
-    @PostMapping("/create-item-form/view")
-    public String viewItemForm(Model model, CreateOfferEntity createOfferEntity) {
-
-        model.addAttribute("productName", createOfferEntity.getProductName());
-        model.addAttribute("price", createOfferService.getTotalPrice(createOfferEntity));
-
-        return "redirect:/create-item-form/view";
-    }
-   @GetMapping("/create-item-form/view")
-    public String createItemForms(Model model, CreateOfferEntity createOfferEntity) {
-
-            model.addAttribute("productName", createOfferEntity.getProductName());
-            model.addAttribute("price", createOfferService.getTotalPrice(createOfferEntity));
-
-            return "create-item-form";
     }
 
 
@@ -82,4 +65,25 @@ public class CreateOfferController {
 
         return "redirect:/create-item-form/view";
     }
+
+
+
+    /*@PostMapping("/create-item-form/view")
+    public String viewItemForm(Model model, CreateOfferEntity createOfferEntity) {
+
+        model.addAttribute("productName", createOfferEntity.getProductName());
+        model.addAttribute("price", createOfferService.getTotalPrice(createOfferEntity));
+
+        return "redirect:/create-item-form/view";
+    }*/
+   @GetMapping("/create-item-form/view")
+    public String createItemForms(Model model,CreateOfferEntity createOfferEntity) {
+
+            model.addAttribute("productName", createOfferEntity.getProductName());
+            model.addAttribute("price", createOfferService.getTotalPrice(createOfferEntity));
+
+            return "create-item-form";
+    }
+
+
 }

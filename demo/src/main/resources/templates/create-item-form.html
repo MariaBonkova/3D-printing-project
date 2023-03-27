@@ -54,13 +54,13 @@
                     <label for="formFile" class="form-label"></label>
                     <input class="form-control" type="file">
                     <label for="formFile" class="form-label"></label>
-                    <a th:href="@{/create-item-form/view}" class="btn btn-success">Потвърди поръчката</a>
+                    <a th:href="@{/create-item-form}" class="btn btn-success">Потвърди поръчката</a>
                 </form>
             </div>
             <form
-                    th:action="@{/create-item-form/view}"
+                    th:action="@{/create-item-form}"
                     th:method="post"
-                    th:object="${createOfferView}">
+                    th:object="${createOfferEntity}">
                 <div class="col-sm-6">
                     <div class="card" style="width: 28rem;">
                         <img class="card-img-top"

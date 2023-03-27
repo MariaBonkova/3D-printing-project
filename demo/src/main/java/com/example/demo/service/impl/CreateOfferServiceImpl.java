@@ -2,13 +2,14 @@ package com.example.demo.service.impl;
 
 import com.example.demo.models.dto.CreateOfferDto;
 import com.example.demo.models.entity.CreateOfferEntity;
+import com.example.demo.models.view.CreateOfferView;
 import com.example.demo.repositopy.CreateOfferRepository;
 import com.example.demo.service.CreateOfferService;
 import com.example.demo.service.MaterialService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 @Service
 public class CreateOfferServiceImpl implements CreateOfferService {
@@ -17,7 +18,9 @@ public class CreateOfferServiceImpl implements CreateOfferService {
     private final MaterialService materialService;
     private final CreateOfferRepository createOfferRepository;
 
-    public CreateOfferServiceImpl(MaterialService materialService, CreateOfferRepository createOfferRepository) {
+
+    public CreateOfferServiceImpl(MaterialService materialService,
+                                  CreateOfferRepository createOfferRepository) {
         this.materialService = materialService;
         this.createOfferRepository = createOfferRepository;
 
@@ -42,8 +45,10 @@ public class CreateOfferServiceImpl implements CreateOfferService {
     }
 
     public BigDecimal getTotalPrice(CreateOfferEntity createOfferEntity){
-        Optional<CreateOfferEntity> byId = createOfferRepository.findById(createOfferEntity.getId());
-        return byId.get().getPrice();
+
+        return  createOfferRepository.findByProductName(createOfferEntity.getProductName()).
+                get().getPrice();
+
     }
 
 

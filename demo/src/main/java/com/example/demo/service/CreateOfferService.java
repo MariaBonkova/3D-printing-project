@@ -10,4 +10,5 @@ public interface CreateOfferService {
     void createOffer(CreateOfferDto createOfferDto);
 
     Object getTotalPrice(CreateOfferEntity createOfferEntity);
+
 }
