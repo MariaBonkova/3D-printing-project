@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.models.entity.CreateOfferEntity;
 import com.example.demo.models.entity.MaterialEntity;
 import com.example.demo.models.entity.enums.MaterialComposition;
 import com.example.demo.repositopy.MaterialRepository;
@@ -47,14 +46,18 @@ private final MaterialRepository materialRepository;
     }
 
     @Override
-    public MaterialComposition findByName(MaterialComposition name) {
-        materialRepository.findByName(name);
-        return name;
+    public BigDecimal findPriceOfMaterial(MaterialComposition materialComposition) {
+        return materialRepository.findPriceOfMaterial(MaterialComposition.valueOf(materialComposition.name()));
     }
 
-    public BigDecimal findMaterialEntitiesByPrice(String name){
-        return materialRepository.findMaterialEntitiesByPrice(name);
+
+    @Override
+    public MaterialComposition findByName(MaterialComposition name) {
+        return  materialRepository.findByName(name);
+
     }
+
+
 
 
 }

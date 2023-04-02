@@ -9,40 +9,20 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "musical_instruments")
-public class MusicalInstrumentEntity extends BaseEntity{
+public class MusicalInstrumentEntity extends BaseProduct{
 
-    private String title;
-    private String imageUrl;
-    private BigDecimal instrumentPrice;
+    private String description;
 
     public MusicalInstrumentEntity() {
     }
-@Column(nullable = false)
-    public String getTitle() {
-        return title;
+
+    @Column(columnDefinition = "TEXT")
+    public String getDescription() {
+        return description;
     }
 
-    public MusicalInstrumentEntity setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-    @Column(nullable = false)
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public MusicalInstrumentEntity setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
-    @Column(nullable = false)
-
-    public BigDecimal getInstrumentPrice() {
-        return instrumentPrice;
-    }
-
-    public MusicalInstrumentEntity setInstrumentPrice(BigDecimal instrumentPrice) {
-        this.instrumentPrice = instrumentPrice;
+    public MusicalInstrumentEntity setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

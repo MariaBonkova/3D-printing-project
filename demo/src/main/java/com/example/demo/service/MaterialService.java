@@ -7,7 +7,9 @@ import java.math.BigDecimal;
 public interface MaterialService {
     void initPrice();
 
-    MaterialComposition findByName(MaterialComposition materialComposition);
+    BigDecimal findPriceOfMaterial(MaterialComposition materialComposition);
 
-    BigDecimal findMaterialEntitiesByPrice(String name);
+
+    MaterialComposition findByName(MaterialComposition name);
+
 }

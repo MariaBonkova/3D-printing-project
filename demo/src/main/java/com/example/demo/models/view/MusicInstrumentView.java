@@ -2,27 +2,26 @@ package com.example.demo.models.view;
 
 import java.math.BigDecimal;
 
-public class CreateOfferView {
+public class MusicInstrumentView {
 
     private Long id;
     private String productName;
     private BigDecimal price;
     private String urlImage;
 
-    public CreateOfferView() {
-    }
 
-    public CreateOfferView(Long id, String productName, BigDecimal price) {
+    public MusicInstrumentView(Long id, String productName, BigDecimal price, String urlImage) {
         this.id = id;
         this.productName = productName;
         this.price = price;
+        this.urlImage = urlImage;
     }
 
     public Long getId() {
         return id;
     }
 
-    public CreateOfferView setId(Long id) {
+    public MusicInstrumentView setId(Long id) {
         this.id = id;
         return this;
     }
@@ -31,7 +30,7 @@ public class CreateOfferView {
         return productName;
     }
 
-    public CreateOfferView setProductName(String productName) {
+    public MusicInstrumentView setProductName(String productName) {
         this.productName = productName;
         return this;
     }
@@ -40,7 +39,7 @@ public class CreateOfferView {
         return price;
     }
 
-    public CreateOfferView setPrice(BigDecimal price) {
+    public MusicInstrumentView setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -49,7 +48,7 @@ public class CreateOfferView {
         return urlImage;
     }
 
-    public CreateOfferView setUrlImage(String urlImage) {
+    public MusicInstrumentView setUrlImage(String urlImage) {
         this.urlImage = urlImage;
         return this;
     }

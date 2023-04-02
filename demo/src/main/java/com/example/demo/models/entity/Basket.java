@@ -1,6 +1,5 @@
 package com.example.demo.models.entity;
 
-import com.example.demo.models.entity.enums.ProductCategoryEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -16,7 +15,7 @@ public class Basket extends BaseEntity{
     private BigDecimal price;
    private Integer quantity;
    private BigDecimal deliveryPrice;
-    List<ProductCategoryEnum> buyItem;
+
 
     public Basket() {
     }
@@ -57,12 +56,5 @@ public class Basket extends BaseEntity{
         return this;
     }
 
-    public List<ProductCategoryEnum> getBuyItem() {
-        return buyItem;
-    }
 
-    public Basket setBuyItem(List<ProductCategoryEnum> buyItem) {
-        this.buyItem = buyItem;
-        return this;
-    }
 }

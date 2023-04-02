@@ -1,3 +1,4 @@
+
 insert  into house ( title, image_url, quadrature,description, house_price)
 values('Двустайна кръгла къща','https://i.pinimg.com/originals/12/55/ea/1255ea85e6357f3a77a4540aec3b7dab.jpg',60,
        'Къщата се издава по 3D принтиран материал. Състои се от всекидневна с кухня, 1 спалня, баня с тоалетна. Покривът е от прозрачен 3D материал.',60000);

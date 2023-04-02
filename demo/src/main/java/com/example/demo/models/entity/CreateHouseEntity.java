@@ -1,35 +1,32 @@
-package com.example.demo.models.dto;
+package com.example.demo.models.entity;
 
-import com.example.demo.models.entity.BaseEntity;
 import com.example.demo.models.entity.enums.MaterialComposition;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
-public class CreateOfferDto {
+@Entity
+@Table(name = "create_house_entity")
+public class CreateHouseEntity extends BaseEntity {
 
     private String productName;
     private MaterialComposition materialComposition;
-    private BigDecimal quantity;
+    private BigDecimal quadrature;
     private String description;
+    private BigDecimal flat;
     private BigDecimal price;
     private String urlImage;
 
-    public CreateOfferDto() {
+    public CreateHouseEntity() {
     }
 
-
-    @Size(min = 3, max = 30)
-    @Column(unique = true)
+    @Column(name = "product_name", nullable = false)
     public String getProductName() {
         return productName;
     }
 
-    public CreateOfferDto setProductName(String productName) {
+    public CreateHouseEntity setProductName(String productName) {
         this.productName = productName;
         return this;
     }
@@ -39,28 +36,38 @@ public class CreateOfferDto {
         return materialComposition;
     }
 
-    public CreateOfferDto setMaterialComposition(MaterialComposition materialComposition) {
+    public CreateHouseEntity setMaterialComposition(MaterialComposition materialComposition) {
         this.materialComposition = materialComposition;
         return this;
     }
 
     @Positive
-    public BigDecimal getQuantity() {
-        return quantity;
+    public BigDecimal getQuadrature() {
+        return quadrature;
     }
 
-    public CreateOfferDto setQuantity(BigDecimal quantity) {
-        this.quantity = quantity;
+    public CreateHouseEntity setQuadrature(BigDecimal quadrature) {
+        this.quadrature = quadrature;
         return this;
     }
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "text")
     public String getDescription() {
         return description;
     }
 
-    public CreateOfferDto setDescription(String description) {
+    public CreateHouseEntity setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    @Positive
+    public BigDecimal getFlat() {
+        return flat;
+    }
+
+    public CreateHouseEntity setFlat(BigDecimal flat) {
+        this.flat = flat;
         return this;
     }
 
@@ -69,7 +76,7 @@ public class CreateOfferDto {
         return price;
     }
 
-    public CreateOfferDto setPrice(BigDecimal price) {
+    public CreateHouseEntity setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -78,7 +85,7 @@ public class CreateOfferDto {
         return urlImage;
     }
 
-    public CreateOfferDto setUrlImage(String urlImage) {
+    public CreateHouseEntity setUrlImage(String urlImage) {
         this.urlImage = urlImage;
         return this;
     }

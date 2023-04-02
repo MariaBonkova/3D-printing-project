@@ -1,7 +1,6 @@
 package com.example.demo.models.entity;
 
 import com.example.demo.models.entity.enums.MaterialComposition;
-import com.example.demo.models.entity.enums.ProductCategoryEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 

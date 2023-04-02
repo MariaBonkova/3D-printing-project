@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 @Repository
 public interface MaterialRepository extends JpaRepository<MaterialEntity,Long> {
 
-    void findByName(MaterialComposition materialComposition);
+    MaterialComposition findByName(MaterialComposition materialComposition);
 
-    @Query("select m.price from MaterialEntity as m where m.name like :name")
-    BigDecimal findMaterialEntitiesByPrice(@Param("name") String name);
+   @Query("select m.price from MaterialEntity m where m.name =:name")
+    BigDecimal findPriceOfMaterial(@Param("name") MaterialComposition name);
 }
