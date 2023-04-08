@@ -16,7 +16,7 @@ public class MusicalInstrumentEntity extends BaseProduct{
     public MusicalInstrumentEntity() {
     }
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }

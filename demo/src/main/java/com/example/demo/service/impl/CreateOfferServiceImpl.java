@@ -4,6 +4,7 @@ import com.example.demo.models.dto.CreateHouseOfferDto;
 import com.example.demo.models.dto.CreateOfferDto;
 import com.example.demo.models.entity.CreateHouseEntity;
 import com.example.demo.models.entity.CreateOfferEntity;
+import com.example.demo.models.entity.PetsItemEntity;
 import com.example.demo.models.view.HouseView;
 import com.example.demo.models.view.MusicInstrumentView;
 import com.example.demo.models.view.PetsView;
@@ -86,6 +87,19 @@ public class CreateOfferServiceImpl implements CreateOfferService {
         CreateHouseEntity createHouseEntity = byId.get();
         return modelMapper.map(createHouseEntity, HouseView.class);
     }
+
+    @Override
+    public PetsView createNewItem(PetsItemEntity petsItemEntity) {
+        PetsView petsView = new PetsView();
+       petsView.setId(petsItemEntity.getId());
+        petsView.setProductName(petsItemEntity.getTitle());
+        petsView.setPrice(petsItemEntity.getPrice());
+        petsView.setUrlImage(petsItemEntity.getImageUrl());
+
+        return petsView;
+
+    }
+
 
 
 }

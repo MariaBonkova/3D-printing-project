@@ -3,6 +3,7 @@ package com.example.demo.web;
 import com.example.demo.models.dto.CreateHouseOfferDto;
 import com.example.demo.models.dto.CreateOfferDto;
 import com.example.demo.models.entity.CreateOfferEntity;
+import com.example.demo.models.entity.PetsItemEntity;
 import com.example.demo.models.view.HouseView;
 import com.example.demo.models.view.MusicInstrumentView;
 import com.example.demo.models.view.PetsView;
@@ -77,12 +78,12 @@ public class CreateOfferController {
 
     @GetMapping("/pets-view")
     public String petsView() {
-        return "pets-view";
-    }
+        return "pets-view" ;
 
+    }
     @GetMapping("/music-view")
     public String musicView() {
-        return "music-view";
+        return "/music-view";
     }
 
     @GetMapping("/house-view")

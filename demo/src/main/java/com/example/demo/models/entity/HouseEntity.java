@@ -24,7 +24,7 @@ public class HouseEntity extends BaseProduct{
         this.quadrature = quadrature;
         return this;
     }
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }

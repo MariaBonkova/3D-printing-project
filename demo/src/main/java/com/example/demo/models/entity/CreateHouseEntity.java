@@ -41,7 +41,7 @@ public class CreateHouseEntity extends BaseEntity {
         return this;
     }
 
-    @Positive
+    @Column(name = "quadrature")
     public BigDecimal getQuadrature() {
         return quadrature;
     }
@@ -51,7 +51,7 @@ public class CreateHouseEntity extends BaseEntity {
         return this;
     }
 
-    @Column(columnDefinition = "text")
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -61,7 +61,7 @@ public class CreateHouseEntity extends BaseEntity {
         return this;
     }
 
-    @Positive
+    @Column
     public BigDecimal getFlat() {
         return flat;
     }
@@ -71,7 +71,7 @@ public class CreateHouseEntity extends BaseEntity {
         return this;
     }
 
-    @Positive
+    @Column
     public BigDecimal getPrice() {
         return price;
     }

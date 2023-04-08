@@ -8,6 +8,7 @@ import java.util.*;
 @Entity
 @Table(name = "users")
 public class UserEntity  {
+
     private Long id;
     private String firstName;
     private String lastName;
